@@ -219,6 +219,11 @@ class TemplateConfig {
       eleventyConfigApiMergingObject.templateFormats ||
       localConfig.templateFormats;
 
+    // blow away dataDeepMerge set in config return object and prefer one set in config API
+    localConfig.dataDeepMerge = typeof eleventyConfigApiMergingObject.dataDeepMerge !== 'undefined'
+      ? eleventyConfigApiMergingObject.dataDeepMerge
+      : localConfig.dataDeepMerge;
+
     // debug("eleventyConfig.getMergingConfigObject: %o", eleventyConfig.getMergingConfigObject());
     debug("localConfig: %o", localConfig);
     debug("overrides: %o", this.overrides);

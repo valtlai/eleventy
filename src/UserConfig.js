@@ -65,6 +65,10 @@ class UserConfig {
     this.dataExtensions = new Map();
 
     this.quietMode = false;
+
+    // TODO: move to correct place
+    this.dataTemplateEngine = undefined;
+    this.markdownTemplateEngine = 'liquid';
   }
 
   versionCheck(expected) {
@@ -666,6 +670,15 @@ class UserConfig {
     this.dataExtensions.set(formatExtension, formatParser);
   }
 
+  // TODO: move to correct place
+  setDataTemplateEngine(tmplEngine) {
+    this.dataTemplateEngine = tmplEngine;
+  }
+  setMarkdownTemplateEngine(tmplEngine) {
+    this.markdownTemplateEngine = tmplEngine;
+  }
+
+
   getMergingConfigObject() {
     return {
       templateFormats: this.templateFormats,
@@ -710,6 +723,10 @@ class UserConfig {
       extensionMap: this.extensionMap,
       quietMode: this.quietMode,
       events: this.events,
+
+      // TODO: move to correct place
+      dataTemplateEngine: this.dataTemplateEngine,
+      markdownTemplateEngine: this.markdownTemplateEngine
     };
   }
 }
